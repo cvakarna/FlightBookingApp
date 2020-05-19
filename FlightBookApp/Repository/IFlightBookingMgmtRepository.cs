@@ -9,5 +9,6 @@ namespace FlightBookApp.Repository
     public interface IFlightBookingMgmtRepository
     {
         Task<List<FlightDetails>> BookFlightAsync(BookFlight bookingInfo);
+        List<FlightDetails>  FilterFlights(string filterAirLine);
     }
 }

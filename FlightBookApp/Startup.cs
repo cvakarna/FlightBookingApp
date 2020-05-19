@@ -24,8 +24,8 @@ namespace FlightBookApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<IFlightBookingMgmtRepository, FlightBookingMgmtRepository>();
-            services.AddScoped<IService, TrinatiumService>();
+            services.AddSingleton<IFlightBookingMgmtRepository, FlightBookingMgmtRepository>();
+            services.AddSingleton<IService, TrinatiumService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -31,6 +31,7 @@ namespace FlightBookApp.Repository
             return this.FlightDetails;
         }
 
+
         private void ParseResponseData(string resonseData)
         {
            JObject resonseJobj =  JObject.Parse(resonseData);
@@ -42,6 +43,16 @@ namespace FlightBookApp.Repository
             this.FlightDetails = allFlights;
         }
 
+
+        public List<FlightDetails> FilterFlights(string airLineSearch)
+        {
+            List<FlightDetails> filteredResult = new List<FlightDetails>();
+            if (!string.IsNullOrEmpty(airLineSearch))
+            {
+                filteredResult =  this.FlightDetails.Where(flightObj => flightObj.Airline.ToLower() == airLineSearch.ToLower()).ToList();
+            }
+            return filteredResult;
+        }
 
     }
 }

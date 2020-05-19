@@ -1,0 +1,177 @@
+﻿@model IEnumerable<FlightBookApp.Models.FlightDetails>
+
+@{
+    ViewData["Title"] = "Flight Search Response";
+}
+
+
+    <div>
+        <form method="get" asp-action="Search">
+            <div calss="row">
+
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input type="text" name="filterAirline" class="form-control" placeholder="Airline Code">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-danger">Filter Results</button>
+                    </div>
+                </div>
+                
+            </div>
+           
+        </form>
+           
+    </div>
+
+
+        <div>
+            <div class="row" style="padding:20px">
+                <div class="col-md">
+                    <h2>Onward Results</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Origin)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Destination)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OnwardDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ReturnDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Airline)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FlightNumber)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FlightType)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                @if (item.FlightType == "Onward")
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Origin)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Destination)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OnwardDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ReturnDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Airline)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FlightNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FlightType)
+                                        </td>
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <div class="row" style="padding:20px">
+                <div class="col-md">
+                    <h2>Return Results</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Origin)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Destination)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OnwardDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ReturnDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Airline)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FlightNumber)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FlightType)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                @if (item.FlightType == "Return")
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Origin)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Destination)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OnwardDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ReturnDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Airline)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FlightNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FlightType)
+                                        </td>
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+

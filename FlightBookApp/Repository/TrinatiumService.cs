@@ -10,7 +10,7 @@ namespace FlightBookApp.Repository
 {
     public class TrinatiumService: IService
     {
-        public async Task<string> BookFlightAsync(string bookingInfo)
+        public async Task<string> SearchFlightAsync(string bookingInfo)
         {
             string result = null;
             string serviceUrl = ConfigurationUtil.Properties.ServiceUrl;

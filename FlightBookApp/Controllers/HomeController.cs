@@ -27,9 +27,9 @@ namespace FlightBookApp.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(BookFlight flightBookInfo)
+        public IActionResult Index(SearchFlight flightBookInfo)
         {
-            var result = this._flightBookRepo.BookFlightAsync(flightBookInfo).GetAwaiter().GetResult();
+            var result = this._flightBookRepo.SearchFlightsAsync(flightBookInfo).GetAwaiter().GetResult();
             return View("SearchResults",result);
         }
 

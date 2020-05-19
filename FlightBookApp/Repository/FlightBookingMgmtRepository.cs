@@ -10,8 +10,9 @@ namespace FlightBookApp.Repository
 {
     public class FlightBookingMgmtRepository:IFlightBookingMgmtRepository
     {
-
+        //Service 
         private readonly IService _serviceCallUtil;
+        //Filght Details List To Filter Data
         private List<FlightDetails> FlightDetails = new List<FlightDetails>();
         public FlightBookingMgmtRepository(IService serviceCallUtil)
         {
@@ -19,11 +20,11 @@ namespace FlightBookApp.Repository
         }
 
 
-        public async Task<List<FlightDetails>> BookFlightAsync(BookFlight bookingInfo)
+        public async Task<List<FlightDetails>> SearchFlightsAsync(SearchFlight bookingInfo)
         {
 
-            string bookingDetailsJson = JsonConvert.SerializeObject(bookingInfo);
-            string response = await this._serviceCallUtil.BookFlightAsync(bookingDetailsJson);
+            string searchDetailsJson = JsonConvert.SerializeObject(bookingInfo);
+            string response = await this._serviceCallUtil.SearchFlightAsync(searchDetailsJson);
             if (!string.IsNullOrEmpty(response))
             {
                 ParseResponseData(response);
@@ -31,16 +32,19 @@ namespace FlightBookApp.Repository
             return this.FlightDetails;
         }
 
-
+        /// <summary>
+        /// Method to Parse The Result Json and convertting into List of Models
+        /// </summary>
+        /// <param name="resonseData"></param>
         private void ParseResponseData(string resonseData)
         {
            JObject resonseJobj =  JObject.Parse(resonseData);
-           JArray flightDetailsJArray =  resonseJobj["flightDetails"] as JArray;
+           JArray flightDetailsJArray =  resonseJobj["flightDetails"] as JArray;//Converting to JArray
            var allFlights =  flightDetailsJArray.SelectMany(obj =>
             {
                 return obj["flightSegments"].ToObject<List<FlightDetails>>();
-            }).ToList();
-            this.FlightDetails = allFlights;
+            }).ToList(); //Flattening the Result Jarray of Jarray into List<FlightDetails>
+            this.FlightDetails = allFlights; 
         }
 
 

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace FlightBookApp.Configuration
 {
+    /// <summary>
+    /// Configuration Properties
+    /// </summary>
     public class ConfigurationProperties
     {
         public string LoggerLevel { get; set; }

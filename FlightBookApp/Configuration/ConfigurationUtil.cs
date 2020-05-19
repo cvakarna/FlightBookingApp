@@ -32,12 +32,10 @@ namespace FlightBookApp.Configuration
                 {
                     filePath = Properties.LogFilePath;
                 }
-
-               
             }
             catch (Exception ex)
             {
-               
+                throw;
             }
 
         }

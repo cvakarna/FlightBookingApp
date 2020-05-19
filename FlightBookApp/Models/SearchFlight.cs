@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FlightBookApp.Models
 {
-    public class BookFlight
+    public class SearchFlight
     {
         public string Origin { get; set; }
         public string Destination { get; set; }
